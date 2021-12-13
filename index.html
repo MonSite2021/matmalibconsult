@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Matmalib Consult</title>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="matmalibconsult.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+
+        <!-- MAIN (Center website) -->
+        <div class="main">
+
+            <h1>Matmalib-Consult.be</h1>
+            <hr>
+
+            <h2>Cabinet de courtage depuis 2014</h2>
+
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('apropos')"> A propos</button>
+                <button class="btn" onclick="filterSelection('patrimoine')"> Patrimoine</button>
+                <button class="btn" onclick="filterSelection('famille')"> Famille</button>
+                <button class="btn" onclick="filterSelection('risquesdivers')">Risques divers</button>
+                 <button class="btn" onclick="filterSelection('prevoyance')">Prévoyance</button>
+            </div>
+
+            <!-- Portfolio Gallery Grid -->
+            <div class="row">
+                <div class="column apropos">
+                    <div class="content">
+                        <a href="systeme.html">
+                        <img src="images/umbrella.jpg" alt="Mountains" style="width:100%">
+                        </a>
+                 
+                        <h4>Risques Divers</h4>
+                        <p>Protéger vos biens...</p>
+                    </div>
+                </div>
+                <div class="column patrimoine">
+                    <div class="content">
+                        <a href="proflib.html">
+                        <img src="images/family.jpg" alt="Lights" style="width:100%">
+                         </a>
+                        
+                        <h4>Patrimoine</h4>
+                        <p>La gestion de votre patrimoine est notre métier..</p>
+                    </div>
+                </div>
+                <div class="column famille">
+                    <div class="content">
+                        
+                      <a href="fiscalite.html">
+                        <img src="images/assurance-vie_famille.jpg" alt="Nature" style="width:100%">
+                         </a>
+                        <h4>Famille</h4>
+                        <p>La santé et l'avenir de votre famille sont prioritaires pour vous..</p>
+                    </div>
+                </div>
+
+                <div class="column prevoyance">
+                    <div class="content">
+                      <a href="proprietaire.html">
+                        <img src="images/assurance_prevoyance.jpg" alt="Car" style="width:100%">
+                         </a>
+                        <h4>Prévoyance</h4>
+                        <p>Préparer votre départ..</p>
+                    </div>
+                </div>
+                <div class="column famille">
+                    <div class="content">
+                        <a href="lignevie.html">
+                        <img src="/w3images/cars2.jpg" alt="Car" style="width:100%">
+                         </a>
+                        <h4>Famille</h4>
+                        <p>La santé et l'avenir de votre famille sont prioritaires pour vous..</p>
+                    </div>
+                </div>
+                <div class="column risquesdivers">
+                    <div class="content">
+                        <a href="secu.html">
+                        <img src="/w3images/cars3.jpg" alt="Car" style="width:100%">
+                         </a>
+                        <h4>Risques Divers</h4>
+                        <p>Protéger vos biens...</p>
+                    </div>
+                </div>
+
+                <div class="column patrimoine">
+                    <div class="content">
+                        <a href="proteger.html">
+                        <img src="/w3images/people1.jpg" alt="Car" style="width:100%">
+                        </a>
+                        <h4>Patrimoine</h4>
+                        <p>La gestion de votre patrimoine est notre métier..</p>
+                    </div>
+                </div>
+                <div class="column prvoyance">
+                    <div class="content">
+                        <a href="travailler.html">
+                        <img src="/w3images/people2.jpg" alt="Car" style="width:100%">
+                         </a>
+                        
+                        <h4>Prévoyance</h4>
+                        <p>Préparer votre départ..</p>
+                    </div>
+                </div>
+                <div class="column famille">
+                    <div class="content">
+                        <a href="contact.html">
+                        <img src="/w3images/people3.jpg" alt="Car" style="width:100%">
+                         </a>
+                        <h4>Famille</h4>
+                        <p>La santé et l'avenir de votre famille sont prioritaires pour vous..</p>
+                    </div>
+                </div>
+                <!-- END GRID -->
+            </div>
+
+            <!-- END MAIN -->
+        </div>
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("column");
+                if (c == "all")
+                    c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1)
+                        w3AddClass(x[i], "show");
+                }
+            }
+
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {
+                        element.className += " " + arr2[i];
+                    }
+                }
+            }
+
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+
+
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>
+
+    </body>
+</html>
